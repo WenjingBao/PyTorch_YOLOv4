@@ -1,0 +1,21 @@
+2022/11/3
+     Epoch   gpu_mem       box       obj       cls     total   targets  img_size
+     98/99      5.4G   0.02444   0.02562 0.0001974   0.05025        23       320: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1904/1904 [04:12<00:00,  7.54it/s]
+               Class      Images     Targets           P           R      mAP@.5  mAP@.5:.95: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 78/78 [00:04<00:00, 17.70it/s] 
+                 all    1.24e+03     4.3e+03       0.847       0.987       0.984       0.797
+
+     Epoch   gpu_mem       box       obj       cls     total   targets  img_size
+     99/99      5.4G   0.02438   0.02524 0.0001872   0.04981        20       320: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1904/1904 [04:12<00:00,  7.55it/s]
+               Class      Images     Targets           P           R      mAP@.5  mAP@.5:.95:   0%|                                                                                                                 | 0/78 [00:00<?, ?it/s] 
+Traceback (most recent call last):
+  File "train.py", line 545, in <module>
+    train(hyp, opt, device, tb_writer, wandb)
+  File "train.py", line 352, in train
+    log_imgs=opt.log_imgs if wandb else 0)
+  File "E:\PythonProjects\PyTorch_YOLOv4\test.py", line 226, in test
+    plot_images(img, output_to_target(output, width, height), paths, f, names)  # predictions
+  File "E:\PythonProjects\PyTorch_YOLOv4\utils\plots.py", line 108, in output_to_target
+    return np.array(targets)
+  File "D:\Programfiles\Anaconda3\envs\YOLO\lib\site-packages\torch\_tensor.py", line 757, in __array__
+    return self.numpy()
+TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.

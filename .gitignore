@@ -1,0 +1,6 @@
+
+*.pyc
+*.0
+*.pt
+*.weights
+IR/yolov4.conv.137

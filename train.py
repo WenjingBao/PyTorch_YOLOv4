@@ -18,6 +18,8 @@ import yaml
 from torch.cuda import amp
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.tensorboard import SummaryWriter
+import torch, gc
+from GPUtil import showUtilization as gpu_usage
 from tqdm import tqdm
 
 import test  # import test.py to get mAP after each epoch
@@ -35,6 +37,8 @@ from utils.torch_utils import ModelEMA, select_device, intersect_dicts, torch_di
 
 logger = logging.getLogger(__name__)
 
+
+
 try:
     import wandb
 except ImportError:
@@ -42,6 +46,9 @@ except ImportError:
     logger.info("Install Weights & Biases for experiment logging via 'pip install wandb' (recommended)")
 
 def train(hyp, opt, device, tb_writer=None, wandb=None):
+    gc.collect()
+    torch.cuda.empty_cache()
+    #gpu_usage()
     logger.info(f'Hyperparameters {hyp}')
     save_dir, epochs, batch_size, total_batch_size, weights, rank = \
         Path(opt.save_dir), opt.epochs, opt.batch_size, opt.total_batch_size, opt.weights, opt.global_rank
@@ -317,7 +324,8 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                     #     tb_writer.add_graph(model, imgs)  # add model to tensorboard
                 elif plots and ni == 3 and wandb:
                     wandb.log({"Mosaics": [wandb.Image(str(x), caption=x.name) for x in save_dir.glob('train*.jpg')]})
-
+            gc.collect()
+            torch.cuda.empty_cache()
             # end batch ------------------------------------------------------------------------------------------------
         # end epoch ----------------------------------------------------------------------------------------------------
 
