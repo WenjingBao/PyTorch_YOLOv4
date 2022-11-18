@@ -1,0 +1,10 @@
+# train and val datasets (image directory or *.txt file with image paths)
+train: IR/FLIR-train.txt  # 118k images
+val: IR/FLIR-val.txt  # 5k images
+test: IR/mytest.txt  # 20k images for submission to https://competitions.codalab.org/competitions/20794
+
+# number of classes
+nc: 2
+
+# class names
+names: ['Person','Car'] #, 'Bike', 'Motorcycle', 'Bus', 'Train', 'Traffic light', 'Skateboard', 'Street Sign', 'Fire Hydrant', 'Dog', 'Truck', 'Stroller', 'Scooter', 'Other Vehicle']

@@ -1,5 +1,5 @@
-classes= 4
-train  = IR/train.txt
-valid  = IR/test.txt
-names = IR/IR.names
-backup = IR/Backup
+classes= 15
+train  = IR/FLIR-train.txt
+valid  = IR/FLIR-test.txt
+names = IR/FLIR.names
+backup = IR/FLIR-Backup
