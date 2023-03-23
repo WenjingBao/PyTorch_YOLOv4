@@ -4,3 +4,5 @@
 *.pt
 *.weights
 IR/yolov4.conv.137
+*.npy
+runs/
