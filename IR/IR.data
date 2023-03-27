@@ -1,4 +1,4 @@
-classes= 15
+classes= 1
 train  = IR/FLIR-train.txt
 valid  = IR/FLIR-test.txt
 names = IR/FLIR.names

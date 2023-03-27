@@ -1,5 +1,8 @@
+# Train 3 channel model w/ camel
 python train.py --device 0 --batch-size 8 --img 320 320 --data camel.yaml --cfg IR/yolov4-IR.cfg --weights IR/yolov4.weights --name yolov4-IR --epochs 100
 python test.py --img 320 --conf 0.001 --batch 8 --device 0 --data camel.yaml --cfg IR/yolov4-IR.cfg --weights weights/last_098.pt --names IR/IR.names
+# Train 3 channel model w/ FLIR
 python train.py --device 0 --batch-size 8 --img 640 640 --data FLIR.yaml --cfg IR/yolov4-IR.cfg --weights IR/yolov4.weights --name yolov4-FLIR --epochs 300
 python test.py --img 640 --conf 0.001 --batch 8 --device 0 --data FLIR.yaml --cfg IR/yolov4-IR.cfg --weights weights/best_overall.pt --names IR/FLIR.names
+# Train 1 channel model w/ FLIR
 python train.py --device 0 --batch-size 8 --img 640 640 --data FLIR.yaml --cfg IR\yolov4-IR-FLIR-2class-1channel.cfg --weights IR/yolov4.weights --name yolov4-FLIR --epochs 100
